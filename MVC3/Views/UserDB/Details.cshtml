@@ -1,0 +1,91 @@
+﻿@model MVC3.Models.UserTable
+
+@{
+    Layout = null;
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details - 列出單一記錄的明細</title>
+</head>
+<body>
+    <div>
+        <h4>UserTable</h4>
+        Details - 列出單一記錄的明細。請自行輸入網址 網址 http://xxxxxxxx/UserDB/Details?_ID=1 <hr />
+
+        <dl class="dl-horizontal">
+            <dt>
+                <!-- 列出「標題」、「欄位名稱」、類別的「屬性名稱」 -->
+                Html.DisplayNameFor。屬性名稱：（三種寫法）<br /><hr /><br />
+                (1)    @Html.DisplayNameFor(m => m.UserName)
+                或是Html.Label<br />
+                (2)    @Html.Label("使用者名稱#1（UserName）")
+                或是Html.LabelFor<br />
+                (3)    @Html.LabelFor(m => m.UserName, "使用者名稱#2（UserName）")
+             
+
+                <br /><br />
+            </dt>
+            <dd>
+                <!-- 列出「值」 -->
+                Html.DisplayFor。值：（兩種寫法）<br /><hr /><br />
+                (1)  <font color="blue"> @Html.DisplayFor(m => m.UserName)</font>
+                <br /><br />
+
+                也可以寫成這樣（直接使用  大寫的「Model.屬性名稱」）。值：<br />
+                (2)  <font color="red">@Model.UserName</font>
+                <br /><br />
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(m => m.UserSex)
+            </dt>
+            <dd>
+                <font color="blue"> @Html.DisplayFor(m => m.UserSex)</font><br /><br />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(m => m.UserBirthDay)
+            </dt>
+            <dd>
+                日期的輸出，有這幾種寫法：<br /><br />
+                <!-- 參考資料  https://stackoverflow.com/questions/28114874/html-displayfor-dateformat-mm-dd-yyyy  -->
+                (1) <font color="blue"> @Html.DisplayFor(m => m.UserBirthDay) </font> <br />
+                (2) <font color="green"> @Html.DisplayFor(m => m.UserBirthDay, "{0:yyyy/M/d}") </font> <br /><br />
+
+                <!-- 請注意！底下的 model是大寫開頭！ Model.  -->
+                (3) <font color="red"> @String.Format("{0:yyyy/MM/dd}", Model.UserBirthDay.ToString()) </font> <br />
+                (4) <font color="orange"> @Convert.ToDateTime(Model.UserBirthDay).ToLongDateString() </font> <br />
+                (5) <font color="orange"> @Convert.ToDateTime(Model.UserBirthDay).ToShortDateString() </font> <br />
+                (6) <font color="purple"> @Convert.ToDateTime(Model.UserBirthDay).ToString("yyyy/MM/dd") </font> <br /><br />
+
+                (7) <font color="navy"> @(Model.UserBirthDay.HasValue ? Model.UserBirthDay.Value.ToString("yyyy/MM/dd") : "") </font>
+                <br /><br />
+
+            </dd>
+
+            <dt>
+                <br />
+                @Html.DisplayNameFor(model => model.UserMobilePhone)
+            </dt>
+            <dd>
+                <font color="blue"> @Html.DisplayFor(model => model.UserMobilePhone)</font>
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit（編輯）", "Edit", new { id = Model.UserId }) |
+        @Html.ActionLink("Back to List（列表）", "List")
+    </p>
+
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MVC3.Models.UserTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+</head>
+<body>
+    // 請透過 List檢視畫面，來執行搜尋的成果。<br />
+    // 錯誤！ 直接在網址輸入 http://xxxxxx/UserDB/Search?_SearchWord=MVC<br />
+    // 錯誤！ 直接在網址輸入 http://xxxxxx/UserDB/Search/MVC  （需要修改 /App_Start目錄下的  Route設定）<br />
+    // 自行輸入網址，需改成 [HttpGet]才行。請看下面的 Search3動作。<br />
+    <p>
+        @Html.ActionLink("Create New（新增）", "Create")   <br /><br />
+
+        <h3>Search -- 您搜尋的關鍵字是 -- <font color="red"> @ViewData["SW"] </font></h3>
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserSex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserBirthDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserMobilePhone)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserSex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserBirthDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserMobilePhone)
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

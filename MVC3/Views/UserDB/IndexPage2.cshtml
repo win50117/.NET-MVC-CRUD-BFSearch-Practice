@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVC3.Models.UserTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IndexPage2 （底下有分頁列）</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New（新增）", "Create")
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th bgcolor="pink">
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th bgcolor="pink">
+                @Html.DisplayNameFor(model => model.UserSex)
+            </th>
+            <th bgcolor="pink">
+                @Html.DisplayNameFor(model => model.UserBirthDay)
+            </th>
+            <th bgcolor="pink">
+                @Html.DisplayNameFor(model => model.UserMobilePhone)
+            </th>
+            <th bgcolor="pink"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserSex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserBirthDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserMobilePhone)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit（編輯）", "Edit", new { _ID = item.UserId }) |
+                    @Html.ActionLink("Details（明細）", "Details", new { _ID = item.UserId }) |
+                    @Html.ActionLink("Delete（刪除）", "Delete", new { _ID = item.UserId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br /><br />
+
+    @* @ Html.Raw()方法。不經HTML編碼的 HTML標籤輸出  *@
+    @Html.Raw(ViewBag.PageList)     @* 畫面最下方的「分頁列」 *@
+
+</body>
+</html>

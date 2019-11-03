@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVC3.Models.UserTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search4_Result</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New（新增）", "Create")   <br /><br />
+
+        <h3><font color="blue">Search4（多條件的搜尋（模糊搜尋 Contains））</font> </h3>
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserMobilePhone)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserMobilePhone)
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

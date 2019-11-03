@@ -1,0 +1,69 @@
+﻿@model MVC3.Models.UserTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create -- 新增一筆記錄</title>
+</head>
+<body>
+    <h4>UserTable</h4>  Create -- 新增一筆記錄
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken() <!-- 避免CSRF攻擊 -->
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName)
+                或是
+                @Html.LabelFor(m => m.UserName, "使用者名稱（UserName）")
+
+                @Html.EditorFor(model => model.UserName, new { required = "true", alt = "alt的文字" })   <!-- 必填欄位，透過HTML5來檢查 -->
+                @*  註解：上面的寫法， required無法呈現在畫面上，但下面的寫法則是正確執行。
+                    @Html.TextBoxFor(model => model.UserName, new { required = "true", alt = "alt的文字" })   <!-- 必填欄位，透過HTML5來檢查 --> *@
+
+                @Html.ValidationMessageFor(model => model.UserName, " ** 這是必填欄位 ** ", new { @class = "text-danger" })
+                <!-- 因為 class是關鍵字（保留字），所以使用這個字的時候，請加上「＠符號」。 -->
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserSex)
+
+                @Html.EditorFor(model => model.UserSex)
+                @Html.ValidationMessageFor(model => model.UserSex, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserBirthDay)
+
+                @Html.EditorFor(model => model.UserBirthDay)
+                @Html.ValidationMessageFor(model => model.UserBirthDay, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserMobilePhone)
+
+                @Html.EditorFor(model => model.UserMobilePhone)
+                @Html.ValidationMessageFor(model => model.UserMobilePhone, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create（新增一筆記錄）" />   <br /><br />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to Index（回首頁）", "Index")  &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Back to List（列表）", "List")
+    </div>
+</body>
+</html>

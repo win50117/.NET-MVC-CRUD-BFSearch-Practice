@@ -1,0 +1,92 @@
+﻿@model MVC3.Models.UserTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit2</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>UserTable</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.UserId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserSex, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserSex, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserSex, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <br /><br />
+                注意！<font color="red">日期欄位，需修正為 yyyy/MM/dd。不可以有時間欄位（如 12:00:00）。</font>下一個範例將會修正。
+                <br />
+                @Html.LabelFor(model => model.UserBirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <!-- ******  重點！！  重點！！  重點！！ ****** (start)  -->
+                <br />原本預設的日期格式，是DateTime -- <b> @Html.DisplayFor(model => model.UserBirthDay) </b>
+                <br />
+                @*  註解：原本預設的日期格式，輸入的文字方塊如下  *@
+                @* @Html.EditorFor(model => model.UserBirthDay, new { htmlAttributes = new { @class = "form-control" } }) *@
+
+                <br />                                <!-- ****** 解決方法在此！ ****** 如同 Details檢視畫面 的作法 ***** -->
+                @Html.EditorFor(model => model.UserBirthDay, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+                        @Value = @Convert.ToDateTime(Model.UserBirthDay).ToString("yyyy/MM/dd")
+                    }
+                })
+                <!-- ********************************************** (end) -->
+
+                @Html.ValidationMessageFor(model => model.UserBirthDay, "", new { @class = "text-danger" })
+            </div>
+            <br /><br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserMobilePhone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserMobilePhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserMobilePhone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
