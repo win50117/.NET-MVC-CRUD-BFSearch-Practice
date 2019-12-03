@@ -1,0 +1,25 @@
+﻿@model MVC3.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BFSIndex</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.Label("輸入商品名稱：")
+            @Html.TextBox("Title")
+            @*@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })*@
+            <input type="submit" value="BFS搜尋" />   <br /><br />
+        </div>
+    }
+</body>
+</html>

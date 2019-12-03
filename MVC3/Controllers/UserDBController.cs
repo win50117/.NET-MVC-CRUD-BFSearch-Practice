@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,6 +28,41 @@ namespace MVC3.Controllers
         {
             Response.Redirect("http://首頁(網址)/"); //自訂結果 --找不到動作就跳回首頁
             base.HandleUnknownAction(actionName);
+        }
+
+        public ActionResult BFSIndex()
+        {
+            List<Product> ProductList = new List<Product>
+            {
+                new Product{ ID = 1, Title = "衣服1", Color = "紅色"},
+                new Product{ ID = 2, Title = "衣服2", Color = "橙色"},
+                new Product{ ID = 3, Title = "衣服3", Color = "黃色"},
+                new Product{ ID = 4, Title = "衣服4", Color = "綠色"},
+                new Product{ ID = 5, Title = "衣服5", Color = "藍色"},
+                new Product{ ID = 6, Title = "褲子1", Color = "紅色"},
+                new Product{ ID = 7, Title = "褲子2", Color = "橙色"},
+                new Product{ ID = 8, Title = "褲子3", Color = "黃色"},
+                new Product{ ID = 9, Title = "褲子4", Color = "綠色"},
+                new Product{ ID = 10, Title = "褲子5", Color = "藍色"},
+                new Product{ ID = 11, Title = "帽子1", Color = "紅色"},
+                new Product{ ID = 12, Title = "帽子2", Color = "橙色"},
+                new Product{ ID = 13, Title = "帽子3", Color = "黃色"},
+                new Product{ ID = 14, Title = "帽子4", Color = "綠色"},
+                new Product{ ID = 15, Title = "帽子5", Color = "藍色"},
+                new Product{ ID = 16, Title = "手套1", Color = "紅色"},
+                new Product{ ID = 17, Title = "手套2", Color = "橙色"},
+                new Product{ ID = 18, Title = "手套3", Color = "黃色"},
+                new Product{ ID = 19, Title = "手套4", Color = "綠色"},
+                new Product{ ID = 20, Title = "手套5", Color = "藍色"}
+            };
+            return View();
+        }
+
+        [HttpPost, ActionName("BFSIndex")]
+        public ActionResult BFSDetail(string Title = "衣服1")
+        {
+            return Content(Title.ToString());
+            //return HttpNotFound();
         }
 
         public ActionResult Create()
