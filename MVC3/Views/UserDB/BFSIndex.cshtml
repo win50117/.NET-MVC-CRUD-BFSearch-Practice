@@ -15,7 +15,7 @@
         @using (Html.BeginForm("BFSIndex", "UserDB", FormMethod.Post))   // 三個參數分別是：(1)動作名稱、(2)控制器名稱、(3)POST或GET
         {  
             @:輸入產品名稱:            
-            @Html.TextBox("_SearchTitle") // 必須跟「控制器」裡面 Search動作的「輸入變數」一樣。
+            @Html.TextBox("_SearchTitle") // 必須跟「控制器」裡面 BFSIndex動作的「輸入變數」一樣。
             <input type="submit" value="BFS搜尋" /> <br /><br />
         }
     </div>
