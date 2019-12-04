@@ -10,5 +10,6 @@ namespace MVC3.Models
         public int ID { get; set; }
         public string Title { get; set; }
         public string Color { get; set; }
+        public string Tail { get; set; }
     }
 }

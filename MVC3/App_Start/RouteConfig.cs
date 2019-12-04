@@ -16,7 +16,7 @@ namespace MVC3
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "UserDB", action = "List", id = UrlParameter.Optional }
+                defaults: new { controller = "UserDB", action = "BFSIndex", id = UrlParameter.Optional }
             );
         }
     }

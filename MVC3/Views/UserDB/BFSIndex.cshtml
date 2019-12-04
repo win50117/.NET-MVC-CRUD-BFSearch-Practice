@@ -1,5 +1,4 @@
-﻿@model MVC3.Models.Product
-
+﻿
 @{
     Layout = null;
 }
@@ -12,14 +11,13 @@
     <title>BFSIndex</title>
 </head>
 <body>
-    @using (Html.BeginForm())
-    {
-        <div class="form-group">
-            @Html.Label("輸入商品名稱：")
-            @Html.TextBox("Title")
-            @*@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })*@
-            <input type="submit" value="BFS搜尋" />   <br /><br />
-        </div>
-    }
+    <div>
+        @using (Html.BeginForm("BFSIndex", "UserDB", FormMethod.Post))   // 三個參數分別是：(1)動作名稱、(2)控制器名稱、(3)POST或GET
+        {  
+            @:輸入產品名稱:            
+            @Html.TextBox("_SearchTitle") // 必須跟「控制器」裡面 Search動作的「輸入變數」一樣。
+            <input type="submit" value="BFS搜尋" /> <br /><br />
+        }
+    </div>
 </body>
 </html>

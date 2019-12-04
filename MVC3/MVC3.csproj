@@ -126,6 +126,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BFS.cs" />
     <Compile Include="Models\MVC_UserDBContext.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\UserTable.cs" />
@@ -176,6 +177,7 @@
     <Content Include="Views\UserDB\IndexPage.cshtml" />
     <Content Include="Views\UserDB\IndexPage2.cshtml" />
     <Content Include="Views\UserDB\BFSIndex.cshtml" />
+    <Content Include="Views\UserDB\BFS_Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
