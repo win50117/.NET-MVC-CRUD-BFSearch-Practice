@@ -12,7 +12,21 @@
 </head>
 <body>
     <div>
-        搜尋的關鍵字是：<font color="red"> @ViewBag.ST </font> 
+        搜尋的關鍵字是：<font color="red"> @ViewBag.ST </font>
+        <br>
+        ------
+        <br>
+        @Html.DisplayNameFor(m => m.Title):
+        <font color="blue"> @Html.DisplayFor(m => m.Title)</font>
+        <br>
+        @Html.DisplayNameFor(m => m.Color):
+        <font color="blue"> @Html.DisplayFor(m => m.Color)</font>
+        <br>
+        @Html.DisplayNameFor(m => m.ID):
+        <font color="blue"> @Html.DisplayFor(m => m.ID)</font>
+        <br>
+        ------
+
     </div>
 </body>
 </html>

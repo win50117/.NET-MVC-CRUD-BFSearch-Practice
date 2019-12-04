@@ -39,7 +39,7 @@ namespace MVC3.Controllers
         public ActionResult BFSIndex(string _SearchTitle = "衣服1")
         {
             ViewBag.ST = _SearchTitle;
-            List<Product> ProductList = new List<Product>
+            List<Product> ProductList = new List<Product> //Tail 用來將資料串起來跑BFS
             {
                 new Product{ ID = 1, Title = "衣服1", Color = "紅色", Tail = "衣服2"},
                 new Product{ ID = 2, Title = "衣服2", Color = "橙色", Tail = "衣服3"},
@@ -64,15 +64,9 @@ namespace MVC3.Controllers
             };
             BFS _BFS = new BFS();
             Product ProductArray = new Product(); //宣告一個Product容器
-            ProductArray = _BFS.BFSIn(ProductList, _SearchTitle); //將BFS回傳的Product資料存入
-            
-            Response.Write("----<br>");
-            Response.Write("Title:" + ProductArray.Title + "<br>");
-            Response.Write("ID   :" + ProductArray.ID + "<br>");
-            Response.Write("Color:" + ProductArray.Color + "<br>");
-            Response.Write("----<br>");
+            ProductArray = _BFS.BFSIn(ProductList, _SearchTitle); //將BFS回傳的搜尋結果Product資料存入  
 
-            return View("BFS_Result");
+            return View("BFS_Result",ProductArray); //將資料傳給BFS_Result檢視畫面呈現
         }
 
         public ActionResult Create()
