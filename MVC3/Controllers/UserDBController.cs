@@ -63,8 +63,14 @@ namespace MVC3.Controllers
                 new Product{ ID = 20, Title = "手套5", Color = "藍色", Tail = "衣服1"}
             };
             BFS _BFS = new BFS();
-            _BFS.BFSIn(ProductList, _SearchTitle);
-            //Response.Write(ProductList[19].Title);
+            Product ProductArray = new Product(); //宣告一個Product容器
+            ProductArray = _BFS.BFSIn(ProductList, _SearchTitle); //將BFS回傳的Product資料存入
+            
+            Response.Write("----<br>");
+            Response.Write("Title:" + ProductArray.Title + "<br>");
+            Response.Write("ID   :" + ProductArray.ID + "<br>");
+            Response.Write("Color:" + ProductArray.Color + "<br>");
+            Response.Write("----<br>");
 
             return View("BFS_Result");
         }
