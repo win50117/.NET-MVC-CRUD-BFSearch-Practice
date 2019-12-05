@@ -39,32 +39,32 @@ namespace MVC3.Controllers
         public ActionResult BFSIndex(string _SearchTitle = "衣服1")
         {
             ViewBag.ST = _SearchTitle;
-            List<Product> ProductList = new List<Product> //Tail 用來將資料串起來跑BFS
+            List<Product> ProductList = new List<Product> //ParentNode 用來將資料串起來跑BFS
             {
-                new Product{ ID = 1, Title = "衣服1", Color = "紅色", Tail = "衣服2"},
-                new Product{ ID = 2, Title = "衣服2", Color = "橙色", Tail = "衣服3"},
-                new Product{ ID = 3, Title = "衣服3", Color = "黃色", Tail = "衣服4"},
-                new Product{ ID = 4, Title = "衣服4", Color = "綠色", Tail = "衣服5"},
-                new Product{ ID = 5, Title = "衣服5", Color = "藍色", Tail = "褲子1"},
-                new Product{ ID = 6, Title = "褲子1", Color = "紅色", Tail = "褲子2"},
-                new Product{ ID = 7, Title = "褲子2", Color = "橙色", Tail = "褲子3"},
-                new Product{ ID = 8, Title = "褲子3", Color = "黃色", Tail = "褲子4"},
-                new Product{ ID = 9, Title = "褲子4", Color = "綠色", Tail = "褲子5"},
-                new Product{ ID = 10, Title = "褲子5", Color = "藍色", Tail = "帽子1"},
-                new Product{ ID = 11, Title = "帽子1", Color = "紅色", Tail = "帽子2"},
-                new Product{ ID = 12, Title = "帽子2", Color = "橙色", Tail = "帽子3"},
-                new Product{ ID = 13, Title = "帽子3", Color = "黃色", Tail = "帽子4"},
-                new Product{ ID = 14, Title = "帽子4", Color = "綠色", Tail = "帽子5"},
-                new Product{ ID = 15, Title = "帽子5", Color = "藍色", Tail = "手套1"},
-                new Product{ ID = 16, Title = "手套1", Color = "紅色", Tail = "手套2"},
-                new Product{ ID = 17, Title = "手套2", Color = "橙色", Tail = "手套3"},
-                new Product{ ID = 18, Title = "手套3", Color = "黃色", Tail = "手套4"},
-                new Product{ ID = 19, Title = "手套4", Color = "綠色", Tail = "手套5"},
-                new Product{ ID = 20, Title = "手套5", Color = "藍色", Tail = "衣服1"}
+                new Product{ ID = 1, Title = "衣服1", Color = "紅色", ParentNode = "衣服2"},
+                new Product{ ID = 2, Title = "衣服2", Color = "橙色", ParentNode = "衣服3"},
+                new Product{ ID = 3, Title = "衣服3", Color = "黃色", ParentNode = "衣服4"},
+                new Product{ ID = 4, Title = "衣服4", Color = "綠色", ParentNode = "衣服5"},
+                new Product{ ID = 5, Title = "衣服5", Color = "藍色", ParentNode = "褲子1"},
+                new Product{ ID = 6, Title = "褲子1", Color = "紅色", ParentNode = "褲子2"},
+                new Product{ ID = 7, Title = "褲子2", Color = "橙色", ParentNode = "褲子3"},
+                new Product{ ID = 8, Title = "褲子3", Color = "黃色", ParentNode = "褲子4"},
+                new Product{ ID = 9, Title = "褲子4", Color = "綠色", ParentNode = "褲子5"},
+                new Product{ ID = 10, Title = "褲子5", Color = "藍色", ParentNode = "帽子1"},
+                new Product{ ID = 11, Title = "帽子1", Color = "紅色", ParentNode = "帽子2"},
+                new Product{ ID = 12, Title = "帽子2", Color = "橙色", ParentNode = "帽子3"},
+                new Product{ ID = 13, Title = "帽子3", Color = "黃色", ParentNode = "帽子4"},
+                new Product{ ID = 14, Title = "帽子4", Color = "綠色", ParentNode = "帽子5"},
+                new Product{ ID = 15, Title = "帽子5", Color = "藍色", ParentNode = "手套1"},
+                new Product{ ID = 16, Title = "手套1", Color = "紅色", ParentNode = "手套2"},
+                new Product{ ID = 17, Title = "手套2", Color = "橙色", ParentNode = "手套3"},
+                new Product{ ID = 18, Title = "手套3", Color = "黃色", ParentNode = "手套4"},
+                new Product{ ID = 19, Title = "手套4", Color = "綠色", ParentNode = "手套5"},
+                new Product{ ID = 20, Title = "手套5", Color = "藍色", ParentNode = "衣服1"}
             };
             BFS _BFS = new BFS();
             Product ProductArray = new Product(); //宣告一個Product容器
-            ProductArray = _BFS.BFSIn(ProductList, _SearchTitle); //將BFS回傳的搜尋結果Product資料存入  
+            ProductArray = _BFS.BFSIn(ProductList, _SearchTitle); //執行BFS並將回傳的搜尋結果 Product資料存入  
 
             return View("BFS_Result",ProductArray); //將資料傳給BFS_Result檢視畫面呈現
         }
