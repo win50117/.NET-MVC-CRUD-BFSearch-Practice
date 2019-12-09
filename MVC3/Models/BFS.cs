@@ -11,9 +11,9 @@ namespace MVC3.Models
 {
     public class BFS
     {
-        private bool[] visit = new bool[20]; //存取節點是否被探索
-        public Product BFSIn(List<Product> _PDList, string _SearchTitle)
+        public Product BFSIn(List<Product> _PDList, string _SearchTitle)//使用資料List和搜尋關鍵字參數
         {
+            bool[] Visit = new bool[_PDList.Count];//宣告和資料數量相等的陣列，用於存取節點是否被探索
             Queue myQueue = new Queue();
 
             if (_PDList[0].Title == _SearchTitle) //如果搜尋項目等於起始節點，回傳節點資料
@@ -23,7 +23,7 @@ namespace MVC3.Models
             else
             {
                 myQueue.Enqueue(_PDList[0].Title);//放入根節點
-                visit[0] = true; //根節點標記已探索
+                Visit[0] = true; //根節點標記已探索
             }
             
             while (myQueue.Count != 0)      //若queue不是空的 
@@ -32,7 +32,7 @@ namespace MVC3.Models
 
                 for (int i = 0; i < _PDList.Count; i++)
                 {
-                    if (visit[i] == false)  //若鄰節點未被探索過 
+                    if (Visit[i] == false)  //若鄰節點未被探索過 
                     {
                         if (_PDList[i].ParentNode == Head)
                         {
@@ -41,7 +41,7 @@ namespace MVC3.Models
                                 return _PDList[i];
                             }
                             myQueue.Enqueue(_PDList[i].Title); //將臨節點放入
-                            visit[i] = true;
+                            Visit[i] = true;
                         }
                     }                    
                 }
